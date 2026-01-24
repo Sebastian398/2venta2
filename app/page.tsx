@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
 import { useState } from 'react';
 
-// Datos de ejemplo
 const featuredProducts = [
   {
     id: '1',
@@ -13,6 +12,7 @@ const featuredProducts = [
     originalPrice: 49.99,
     discount: 40,
     image: '/auriculares.jpg',
+    category: 'electronica',
   },
   {
     id: '2',
@@ -21,6 +21,7 @@ const featuredProducts = [
     originalPrice: 19.99,
     discount: 35,
     image: '/camisa.jpg',
+    category: 'moda',
   },
   {
     id: '3',
@@ -29,6 +30,7 @@ const featuredProducts = [
     originalPrice: 59.99,
     discount: 42,
     image: '/sartenes.jpg',
+    category: 'hogar',
   },
 ];
 
@@ -42,8 +44,12 @@ const categories = [
 ];
 
 export default function HomePage() {
-  const { dispatch } = useCart();
+  // ✅ Ahora destructuramos tanto state como dispatch
+  const { state, dispatch } = useCart();
   const [searchQuery, setSearchQuery] = useState('');
+
+  // ✅ Calculamos el total de productos en el carrito
+  const cartItemCount = state.items.length;
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,19 +89,25 @@ export default function HomePage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="¿Qué estás buscando?"
-                className="w-full px-4 py-2 pl-10 pr-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400 text-black placeholder-gray-500"
+                className="w-full px-4 py-2 pl-10 pr-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400 text-gray-700 placeholder-gray-500"
               />
               <span className="absolute left-3 top-2.5 text-gray-400">🔍</span>
             </div>
           </form>
 
           <div className="flex items-center space-x-4">
-            <Link href="/cuenta" className="p-2">👤</Link>
-            <Link href="/carrito" className="relative p-2">
+            <Link href="/cuenta" className="p-2 text-xl">👤</Link>
+            <Link href="/productos/nuevo" className="p-2 text-xl bg-orange-100 rounded-full hover:bg-orange-200 transition">
+              ➕
+            </Link>
+            <Link href="/carrito" className="relative p-2 text-xl">
               <span>🛒</span>
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                0
-              </span>
+              {/* ✅ Mostramos el contador real del carrito */}
+              {cartItemCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {cartItemCount}
+                </span>
+              )}
             </Link>
           </div>
         </div>
@@ -147,18 +159,20 @@ export default function HomePage() {
                 key={product.id}
                 className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col h-full"
               >
-                <div className="relative w-full h-48 bg-gray-100">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="object-contain p-4 w-full h-full"
-                  />
-                  {product.discount && (
-                    <span className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
-                      -{product.discount}%
-                    </span>
-                  )}
-                </div>
+                <Link href={`/producto/${product.id}`} className="block">
+                  <div className="relative w-full h-48 bg-gray-100">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="object-contain p-4 w-full h-full"
+                    />
+                    {product.discount && (
+                      <span className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                        -{product.discount}%
+                      </span>
+                    )}
+                  </div>
+                </Link>
                 <div className="p-4 flex flex-col flex-grow">
                   <h3 className="font-semibold text-sm line-clamp-2 text-black">{product.name}</h3>
                   <div className="flex items-center mt-2">
@@ -182,10 +196,10 @@ export default function HomePage() {
         </section>
       </main>
 
-      <footer className="bg-gray-800 text-white py-6">
-        <div className="container mx-auto px-3 text-center">
+      <footer className="bg-gray-800 text-white py-3">
+        <div className="container mx-auto px-2 text-center">
           <p className="text-lg font-bold mb-2">2Venta</p>
-          <p className="text-gray-400 text-sm mb-4">Compra rápido, vende fácil.</p>
+          <p className="text-gray-400 text-sm mb-2">Compra rápido, vende fácil.</p>
           <p className="text-gray-500 text-xs">
             © 2026 2Venta. Todos los derechos reservados.
           </p>
