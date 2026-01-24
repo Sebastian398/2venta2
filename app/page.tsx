@@ -159,7 +159,7 @@ export default function HomePage() {
                 key={product.id}
                 className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col h-full"
               >
-                <Link href={`/producto/${product.id}`} className="block">
+                <Link href={`/productos/${product.id}`} className="block">
                   <div className="relative w-full h-48 bg-gray-100">
                     <img
                       src={product.image}
