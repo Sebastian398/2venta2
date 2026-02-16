@@ -97,7 +97,7 @@ export default function AccountPage() {
 
           {isLogin && (
             <div className="text-right">
-              <Link href="/recuperar" className="text-sm text-orange-500 hover:underline">
+              <Link href="/cuenta/recuperar" className="text-sm text-orange-500 hover:underline">
                 ¿Olvidaste tu contraseña?
               </Link>
             </div>
