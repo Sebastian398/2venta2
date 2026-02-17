@@ -78,9 +78,20 @@ export default function HomePage() {
   const { user, logout } = useAuth();
   const [searchQuery, setSearchQuery] = useState('');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [unreadNotifications, setUnreadNotifications] = useState(0); // ← NUEVO: estado de notificaciones
   const menuRef = useRef<HTMLDivElement>(null);
 
   const cartItemCount = state.items.length;
+
+  // Cargar notificaciones no leídas (simulado)
+  useEffect(() => {
+    if (user) {
+      // En producción: fetch('/api/notifications/unread')
+      setUnreadNotifications(3); // ← Simulación: 3 notificaciones no leídas
+    } else {
+      setUnreadNotifications(0);
+    }
+  }, [user]);
 
   // Cerrar menú al hacer clic fuera
   useEffect(() => {
@@ -137,7 +148,7 @@ export default function HomePage() {
             </div>
           </form>
 
-          <div className="flex items-center space-x-4 relative" ref={menuRef}>
+          <div className="flex items-center space-x-3 relative" ref={menuRef}>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 text-xl relative"
@@ -149,6 +160,16 @@ export default function HomePage() {
                 </span>
               )}
             </button>
+
+            {/* Botón de notificaciones con contador */}
+            <Link href="/notificaciones" className="relative p-2 text-xl">
+              <span>🔔</span>
+              {unreadNotifications > 0 && (
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {unreadNotifications > 9 ? '9+' : unreadNotifications}
+                </span>
+              )}
+            </Link>
 
             {isMenuOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50 border border-gray-200">
