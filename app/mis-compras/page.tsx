@@ -57,11 +57,11 @@ export default function MisCompras() {
       </header>
 
       <main className="container mx-auto px-4 py-6">
-        <h1 className="text-2xl font-bold mb-6">Mis compras</h1>
+        <h1 className="text-2xl font-bold mb-6 text-gray-700">Mis compras</h1>
 
         {orders.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-500">No has realizado compras aún.</p>
+            <p className="text-gray-600">No has realizado compras aún.</p>
             <Link
               href="/"
               className="mt-4 inline-block bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-orange-600"
@@ -77,8 +77,8 @@ export default function MisCompras() {
                   <div className="flex justify-between items-start">
                     <div>
                       <h2 className="font-semibold text-gray-900">Pedido #{order.id.slice(0, 8)}</h2>
-                      <p className="text-gray-600 text-sm">Vendido por: {order.seller_name}</p>
-                      <p className="text-gray-500 text-xs mt-1">{order.date} • {order.items} artículo{order.items > 1 ? 's' : ''}</p>
+                      <p className="text-gray-700 text-sm">Vendido por: {order.seller_name}</p>
+                      <p className="text-gray-700 text-xs mt-1">{order.date} • {order.items} artículo{order.items > 1 ? 's' : ''}</p>
                     </div>
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${statusColors[order.status] || 'bg-gray-100'}`}>
                       {order.status === 'delivered' ? 'Entregado' : order.status === 'shipped' ? 'Enviado' : 'Pendiente'}

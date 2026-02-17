@@ -56,10 +56,10 @@ export default function NotificacionesPage() {
       </header>
 
       <main className="container mx-auto px-4 py-6">
-        <h1 className="text-2xl font-bold mb-6">Notificaciones</h1>
+        <h1 className="text-2xl font-bold mb-6 text-gray-900">Notificaciones</h1>
 
         {notifications.length === 0 ? (
-          <p className="text-gray-500 text-center py-8">No tienes notificaciones nuevas.</p>
+          <p className="text-gray-600 text-center py-8">No tienes notificaciones nuevas.</p>
         ) : (
           <div className="space-y-3">
             {notifications.map((n) => (
@@ -72,9 +72,9 @@ export default function NotificacionesPage() {
                 <div className="flex items-start">
                   <span className="text-2xl mr-3">{getIcon(n.type)}</span>
                   <div className="flex-1">
-                    <h3 className="font-semibold">{n.title}</h3>
+                    <h3 className="font-semibold text-gray-700">{n.title}</h3>
                     <p className="text-gray-600 text-sm mt-1">{n.body}</p>
-                    <p className="text-gray-400 text-xs mt-2">{n.created_at}</p>
+                    <p className="text-gray-500 text-xs mt-2">{n.created_at}</p>
                   </div>
                 </div>
               </div>

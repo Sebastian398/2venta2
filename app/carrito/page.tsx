@@ -101,7 +101,7 @@ export default function CartPage() {
                 Proceder al pago
               </button>
               <Link
-                href="/"
+                href="/checkout"
                 className="block text-center mt-3 text-orange-500 hover:underline"
               >
                 ← Seguir comprando

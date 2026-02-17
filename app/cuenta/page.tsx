@@ -57,7 +57,7 @@ export default function AccountPage() {
                 value={formData.name}
                 onChange={handleChange}
                 required={!isLogin}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:outline-none"
+                className="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-lg focus:ring-2 focus:ring-orange-400 focus:outline-none"
                 placeholder="Juan Pérez"
               />
             </div>
@@ -74,7 +74,7 @@ export default function AccountPage() {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:outline-none"
+              className="w-full px-4 py-2 border text-gray-700 border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:outline-none"
               placeholder="tu@email.com"
             />
           </div>
@@ -90,7 +90,7 @@ export default function AccountPage() {
               value={formData.password}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:outline-none"
+              className="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-lg focus:ring-2 focus:ring-orange-400 focus:outline-none"
               placeholder="••••••••"
             />
           </div>

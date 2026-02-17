@@ -17,7 +17,7 @@ export default function OlvidePasswordPage() {
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-lg w-full max-w-md p-6">
-        <h1 className="text-2xl font-bold text-center mb-2">¿Olvidaste tu contraseña?</h1>
+        <h1 className="text-2xl text-gray-900 font-bold text-center mb-2">¿Olvidaste tu contraseña?</h1>
         <p className="text-gray-600 text-center mb-6">
           Ingresa tu correo y te enviaremos un enlace para crear una nueva.
         </p>
@@ -29,11 +29,11 @@ export default function OlvidePasswordPage() {
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-gray-700 mb-1">Correo electrónico</label>
+              <label htmlFor="email" className="block text-gray-800 mb-1">Correo electrónico</label>
               <input
                 type="email"
                 id="email"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:outline-none"
+                className="w-full p-3 border border-gray-300 text-gray-700 rounded-lg focus:ring-2 focus:ring-orange-400 focus:outline-none"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required

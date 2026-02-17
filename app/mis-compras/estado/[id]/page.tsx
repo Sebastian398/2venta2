@@ -48,17 +48,17 @@ export default function EstadoPedido() {
       </header>
 
       <main className="container mx-auto px-4 py-6 max-w-2xl">
-        <h1 className="text-2xl font-bold mb-2">Pedido #{order.id}</h1>
-        <p className="text-gray-600 mb-6">Realizado el {order.date}</p>
+        <h1 className="text-2xl font-bold mb-2 text-gray-900">Pedido #{order.id}</h1>
+        <p className="text-gray-600 mb-6 text-gray-700">Realizado el {order.date}</p>
 
         {/* Seguimiento */}
         <div className="mb-8">
-          <h2 className="font-semibold mb-3">Seguimiento</h2>
-          <div className="relative">
+          <h2 className="font-semibold mb-3 text-gray-700">Seguimiento</h2>
+          <div className="relative text-gray-500">
             {statusSteps.map((step, index) => (
               <div key={index} className="flex items-center mb-4">
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center mr-3 ${
-                  index < currentStep ? 'bg-orange-500 text-white' : 'bg-gray-200 text-gray-500'
+                  index < currentStep ? 'bg-orange-500 text-white' : 'bg-gray-200 text-gray-600'
                 }`}>
                   {index < currentStep ? '✓' : index + 1}
                 </div>
@@ -72,20 +72,20 @@ export default function EstadoPedido() {
 
         {/* Dirección */}
         <div className="bg-white p-4 rounded-xl mb-6">
-          <h3 className="font-semibold mb-2">Dirección de envío</h3>
+          <h3 className="font-semibold mb-2 text-gray-700">Dirección de envío</h3>
           <p className="text-gray-700">{order.shipping_address}</p>
         </div>
 
         {/* Productos */}
         <div className="bg-white p-4 rounded-xl mb-6">
-          <h3 className="font-semibold mb-3">Productos</h3>
+          <h3 className="font-semibold mb-3 text-gray-900">Productos</h3>
           {order.items.map((item, idx) => (
-            <div key={idx} className="flex justify-between py-2 border-b border-gray-100 last:border-0">
+            <div key={idx} className="flex justify-between py-2 border-b border-gray-100 last:border-0 text-gray-700">
               <span>{item.name} × {item.quantity}</span>
               <span>${(item.price * item.quantity).toFixed(2)}</span>
             </div>
           ))}
-          <div className="flex justify-between font-bold mt-3 pt-3 border-t border-gray-200">
+          <div className="flex justify-between font-bold mt-3 pt-3 border-t border-gray-200 text-gray-900">
             <span>Total</span>
             <span>${order.total.toFixed(2)}</span>
           </div>

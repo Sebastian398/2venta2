@@ -26,7 +26,7 @@ export default function PagoPage() {
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full text-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto mb-4"></div>
-        <h2 className="text-xl font-bold mb-2">Procesando pago...</h2>
+        <h2 className="text-xl font-bold mb-2 text-gray-700">Procesando pago...</h2>
         <p className="text-gray-600">Por favor, espera un momento.</p>
         <Link href="/carrito" className="mt-4 text-orange-500 hover:underline text-sm">
           ← Cancelar

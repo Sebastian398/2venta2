@@ -51,7 +51,7 @@ export default function MisVentas() {
 
       <main className="container mx-auto px-4 py-6">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">Mis ventas</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Mis ventas</h1>
           <Link
             href="/productos/nuevo"
             className="bg-orange-500 text-white px-4 py-2 rounded-full text-sm hover:bg-orange-600"
@@ -62,7 +62,7 @@ export default function MisVentas() {
 
         {sales.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-500">No has vendido nada aún.</p>
+            <p className="text-gray-600">No has vendido nada aún.</p>
             <Link
               href="/productos/nuevo"
               className="mt-4 inline-block bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-orange-600"
@@ -76,7 +76,7 @@ export default function MisVentas() {
               <div key={sale.id} className="bg-white p-4 rounded-xl shadow-sm">
                 <div className="flex justify-between">
                   <div>
-                    <h2 className="font-semibold">{sale.product_name}</h2>
+                    <h2 className="font-semibold text-gray-700">{sale.product_name}</h2>
                     <p className="text-gray-600 text-sm">Comprado por: {sale.buyer_name}</p>
                     <p className="text-gray-500 text-xs mt-1">{sale.date} • x{sale.quantity}</p>
                   </div>

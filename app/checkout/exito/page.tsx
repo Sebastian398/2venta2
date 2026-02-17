@@ -15,7 +15,7 @@ export default function ExitoPage() {
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full text-center">
         <div className="text-green-500 text-5xl mb-4">✓</div>
-        <h1 className="text-2xl font-bold mb-2">¡Compra exitosa!</h1>
+        <h1 className="text-2xl font-bold mb-2 text-gray-700">¡Compra exitosa!</h1>
         <p className="text-gray-600 mb-6">
           Tu pedido ha sido confirmado. El vendedor ha sido notificado y preparará tu envío.
         </p>
